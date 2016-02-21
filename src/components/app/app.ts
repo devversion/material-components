@@ -3,6 +3,7 @@ import {ViewEncapsulation} from "angular2/core";
 
 import {MdToolbar} from "../toolbar/toolbar";
 import {MdButton} from "../button/button";
+import {MdSwitch} from "../switch/switch";
 
 @Component({
   selector: 'app',
@@ -12,10 +13,13 @@ import {MdButton} from "../button/button";
   ],
   directives: [
     MdToolbar,
-    MdButton
+    MdButton,
+    MdSwitch
   ],
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
+
+  isSwitchChecked: boolean = true;
 
 }

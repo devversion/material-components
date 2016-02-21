@@ -1,3 +1,6 @@
+@import '../../core/style/theme_functions';
+@import '../../core/style/default_theme';
+
 $toolbar-tools-height: 64px !default;
 $toolbar-height: 64px !default;
 $toolbar-medium-tall-height: 88px !default;
@@ -6,8 +9,8 @@ $toolbar-tools-font-size: 20px;
 $toolbar-indent-margin: 64px !default;
 $toolbar-padding: 16px !default;
 
-$toolbar-background: #2196F3;
-$toolbar-foreground: #FFFFFF;
+$toolbar-background: md-color($md-primary);
+$toolbar-foreground: white;
 
 // Basic Toolbar styling
 md-toolbar {
