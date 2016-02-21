@@ -1,0 +1,79 @@
+@import "../../core/style/theme_functions";
+@import "../../core/style/default_theme";
+
+md-checkbox {
+
+  &.md-checked.md-focused .md-container:before {
+    background-color: md-color($md-accent, default, 0.26);
+  }
+
+  .md-icon {
+    border-color: md-color($md-grey, 1000, 0.7);
+  }
+  &.md-checked .md-icon {
+    background-color: md-color($md-accent, default, 0.87);
+  }
+
+  &.md-checked .md-icon:after {
+    border-color: white;
+  }
+
+  &:not([disabled]) {
+    &.md-primary {
+
+      .md-icon {
+        border-color: md-color($md-grey, 1000, 0.7);
+      }
+      &.md-checked .md-icon {
+        background-color: md-color($md-primary, default, 0.87);
+      }
+
+      &.md-checked.md-focused .md-container:before {
+        background-color: md-color($md-primary, default, 0.26);
+      }
+
+      &.md-checked .md-icon:after {
+        border-color: white;
+      }
+    }
+
+    &.md-warn {
+
+      &.md-checked .md-ink-ripple {
+        color: md-color($md-warn, default, 0.87);
+      }
+
+      .md-icon {
+        border-color: md-color($md-grey, 1000, 0.7);
+      }
+      &.md-checked .md-icon {
+        background-color: md-color($md-warn, default, 0.87);
+      }
+      &.md-checked.md-focused:not([disabled]) .md-container:before {
+        background-color: md-color($md-warn, default, 0.26)
+      }
+      &.md-checked .md-icon:after {
+        border-color: white;
+      }
+    }
+  }
+
+  &[disabled] {
+
+    .md-icon {
+      border-color: md-color($md-grey, 1000, 0.3);
+    }
+
+    &.md-checked .md-icon {
+      background-color: md-color($md-grey, A100, 0.3);
+    }
+
+    &.md-checked .md-icon:after {
+      border-color: md-color($md-grey, 200);
+    }
+
+    .md-label {
+      color: md-color($md-grey, A100, 0.3);
+    }
+  }
+}
