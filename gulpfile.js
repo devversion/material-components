@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var typescript = require('gulp-typescript');
+var sass = require('gulp-sass');
 
 
 gulp.task('typescript', function() {
@@ -16,10 +17,17 @@ gulp.task('html', function() {
        .pipe(gulp.dest('dist/src'))
 });
 
+gulp.task('styles', function() {
+    return gulp.src('src/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('dist/src'));
+});
+
 gulp.task('watch', ['default'], function() {
     gulp.watch('src/**/*.ts', ['typescript']);
     gulp.watch('src/**/*.html', ['html']);
+    gulp.watch('src/**/*.scss', ['styles']);
 });
 
 
-gulp.task('default', ['typescript', 'html']);
+gulp.task('default', ['typescript', 'html', 'styles']);
