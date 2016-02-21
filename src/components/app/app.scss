@@ -1,5 +1,5 @@
 app {
-  color: rgba(0,0,0,.87);
+  color: rgba(0, 0, 0, .87);
   font-family: Roboto, "Helvetica Neue", sans-serif;
 
   -webkit-tap-highlight-color: transparent;
@@ -9,4 +9,12 @@ app {
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  .demo-content {
+    padding: 15px;
+
+    .button-showcase * {
+      margin: 0 7px;
+    }
+  }
 }

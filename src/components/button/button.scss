@@ -1,0 +1,118 @@
+@import "../../core/style/variables";
+@import "../../core/style/default_theme";
+@import "../../core/style/shadows";
+
+$button-padding: 0 16px;
+$button-min-width: 88px;
+$button-margin: 0;
+$button-line-height: 36px;
+$button-border-radius: 3px;
+
+$button-font-size: 14px;
+$button-active-color: rgba(158, 158, 158, 0.2);
+
+// Mixin for the specific theming colors
+@mixin md-button-theme ($property, $color:500, $opacity: 1) {
+  &.md-primary {
+    #{$property}: md-color($md-primary, $color, $opacity);
+  }
+  &.md-accent {
+    #{$property}: md-color($md-accent, $color, $opacity);
+  }
+  &.md-warn {
+    #{$property}: md-color($md-warn, $color, $opacity);
+  }
+
+  &.md-primary, &.md-accent, &.md-warn, &[disabled] {
+    &[disabled] {
+      $palette: if($property == 'color', $md-foreground, $md-background);
+      #{$property}: md-color($palette, disabled-button);
+    }
+  }
+}
+
+md-button {
+  box-sizing: border-box;
+  position: relative;
+
+  // Reset browser <button> styles.
+  background: transparent;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  border: none;
+
+  // Make anchors render like buttons.
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: middle;
+
+  // Typography.
+  font-size: $md-body-font-size-base;
+  font-family: $md-font-family;
+  font-weight: 500;
+  color: md-color($md-foreground, text);
+
+  // Sizing.
+  margin: $button-margin;
+  min-width: $button-min-width;
+  line-height: $button-line-height;
+  padding: $button-padding;
+  border-radius: $button-border-radius;
+
+  // Animate the shadow and the background color
+  // Needed for hover and focus
+  transition: box-shadow $swift-ease-out-duration $swift-ease-out-timing-function,
+              background-color $swift-ease-out-duration $swift-ease-out-timing-function;
+
+  // Overwrite default disable cursor
+  &[disabled] {
+    cursor: default;
+  }
+
+  &.md-raised {
+    // Set raised colors
+    @include md-button-theme('color', default-contrast);
+    @include md-button-theme('background-color');
+
+    // Apply the default theme colors
+    background-color: md-color($md-background, background);
+    box-shadow: $whiteframe-shadow-1dp;
+
+    // Force hardware acceleration.
+    transform: translate3d(0, 0, 0);
+
+    // Animation.
+    transition: background $swift-ease-out-duration $swift-ease-out-timing-function,
+    box-shadow $swift-ease-out-duration $swift-ease-out-timing-function;
+
+    // When the button becomes active, we increase the elevation
+    &:active {
+      box-shadow: $whiteframe-shadow-4dp;
+    }
+
+    // Apply another color when the button is focused
+    &.md-button-focus {
+      background-color: md-color($md-foreground, base, 0.12);
+      @include md-button-theme('background-color', 600);
+    }
+
+    // When the button is raised we will show the disable state by removing the elevation.
+    &[disabled] {
+      box-shadow: none;
+    }
+  }
+
+  // When we are not raised we should show the hover
+  &:not(.md-raised) {
+
+    &:hover, &.md-button-focus {
+      background-color: md-color($md-foreground, base, 0.12);
+      @include md-button-theme('background-color', 0.12);
+    }
+
+  }
+}
