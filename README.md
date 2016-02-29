@@ -4,7 +4,7 @@ Angular 2 - Material Components
 - This project adds a few components and rewrites things.
 
 #### Preview
-All components supports a two-way ngModel binding and can be used as a ngControl
+All components supports a two-way ngModel binding and can be used as a `ngControl`
 
 ![Preview](https://i.gyazo.com/981d1fb5fdcd77d6ebe7424c3c859aa8.png)
 
